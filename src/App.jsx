@@ -1,0 +1,34 @@
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import ListData from "./admin/ListData";
+import AuthAdmin from "./auth/AuthAdmin";
+import AuthRoute from "./auth/AuthRoute";
+import BeanDetail from "./pages/BeanDetail";
+import CoffeeDetail from "./pages/CoffeeDetail";
+import CartPage from "./pages/CartPage";
+import ProfilePage from "./pages/ProfilePage";
+import HistoryPage from "./pages/HistoryPage";
+import SettingPage from "./pages/SettingPage";
+import ComingSoon from "./pages/ComingSoon";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/detail/:id" element={<BeanDetail />} />
+      <Route path="/coffee-detail/:id" element={<CoffeeDetail />} />
+      <Route path="/comingsoon" element={<ComingSoon />} />
+      <Route element={<AuthRoute />}>
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/setting" element={<SettingPage />} />
+        <Route path="/history" element={<HistoryPage />} />
+      </Route>
+      <Route element={<AuthAdmin />}><Route path="/admin" element={<ListData />} /></Route>
+    </Routes>
+  );
+}
